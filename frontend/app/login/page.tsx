@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-
+import { useRouter } from "next/navigation"; // ✅ ADDED
 import InputField from "../component/input";
 import Image from "next/image";
 
@@ -11,6 +11,8 @@ type LoginForm = {
 };
 
 export default function LoginPage() {
+  const router = useRouter(); // ✅ ADDED
+
   const [form, setForm] = useState<LoginForm>({
     email: "",
     password: "",
@@ -45,15 +47,19 @@ export default function LoginPage() {
       }
 
       alert("Login successful 🎉");
+
       setForm({
         email: "",
         password: "",
       });
+
+      router.push("/"); // ✅ ADDED (redirect to UploadCapture)
     } catch (error) {
       alert("Something went wrong");
       console.error(error);
     }
   };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div
@@ -127,6 +133,7 @@ export default function LoginPage() {
               Login
             </button>
           </form>
+
           <p className="text-center mt-8 text-gray-700 font-medium">
             Don’t have an account?{" "}
             <a
