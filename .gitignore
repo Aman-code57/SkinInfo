@@ -1,0 +1,9 @@
+.venv/
+.venv2/
+data/
+dataset/
+*.h5
+*.pt
+*.zip
+HAM10000_images/
+*.HAM10000_metadata.csv
